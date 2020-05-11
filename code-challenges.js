@@ -19,7 +19,7 @@ const divisibleByThree = (num) => {
    return (num % 3 === 0 ? `${num} is divisible by three` : `${num} is not divisible by three`)
 }
 // log it to the console to test
-//  console.log(divisibleByThree(num3));
+ console.log(divisibleByThree(num3));
  
 // --------------------2) Create a function that takes in the randomNouns variable and returns an array with all the words capitalized.
 
@@ -40,7 +40,7 @@ const firstLetterCapitalized = (arry) => {
     })
 }
 
-// console.log(firstLetterCapitalized(randomNouns));
+console.log(firstLetterCapitalized(randomNouns));
 
 
 // --------------------3) Create a function that takes in the mixedDataArray array and returns an array with ONLY NUMBERS sorted from least to greatest.
@@ -57,7 +57,7 @@ const numbersOnly = (arry) => {
     return arry.filter(value => typeof value === "number").sort((a,b)=>a-b)
 }
 
-// console.log(numbersOnly(mixedDataArray));
+console.log(numbersOnly(mixedDataArray));
 
 
 // --------------------4) Create a function that takes in a string and logs the index of the first vowel.
@@ -66,16 +66,18 @@ var vowelTester1 = "learn"
 // Expected output: 1
 var vowelTester2 = "throw"
 // Expected output: 3
-const vowels = ["a", "e", "i", "o", "u", "A", "E", "I", "O", "U"]
 
 
 //create a function that passes in a string as an argurment
-// split the string into an array of letters
-// map through the array and return the index of the vowel
+// split the string into an array of letters and lowercase them
+// iterate through the array and return the index of the vowel using the find Index method
 
 const firstVowelFinder = (str) => {
-    let stringsToArray = str.split(" ")
-    return stringsToArray.map(value => value.indexOf(vowels))
+    let stringsToArray = str.toLowerCase().split('')
+    return stringsToArray.findIndex(value => {
+         
+    return(value == 'a' || value == 'e' || value == 'i' || value == 'o' || value == 'u')
+    })
 }
 
 
@@ -84,16 +86,34 @@ console.log(firstVowelFinder(vowelTester2));
 
 // --------------------5) Create a function that takes three arguments - two numbers and a mathematical operation (+, -, *, /) and performs the given calculation. If the input tries to divide by 0, return: "Can't divide by 0!"
 
+// create the function
+// order the parameters in a way that the operation will work
+// return can't divide by zero if tries to divide by zero
 
+const calculator = (num1, op, num2) => {
+    if(num1 === 0 || num2 === 0 && op === "/") {
+        return "Can't divide by zero"
+    } else if (op === "+"){
+        return num1 + num2
+    } else if (op === "-"){
+        return num1 - num2
+    } else if (op === "*"){
+        return num1 * num2
+    } else if (op === "/"){
+        return num1 / num2
+    } else {
+        return "error"
+    }
+}
 
 
 
 // Uncomment and use the following console logs to test your function
-// console.log(calculator(3, "*", 9))
+console.log(calculator(3, "*", 9))
 // Expected output: 27
 
-// console.log(calculator(16, "+", 3))
+console.log(calculator(16, "+", 3))
 // Expected output: 19
 
-// console.log(calculator(89, "/", 0))
+console.log(calculator(89, "/", 0))
 // Expected output: "Can't divide by 0!"
