@@ -41,14 +41,17 @@
 
         render(){
           return(
-            <div>
-              <MoodMeter
-                moodOptions={ this.state.moods[this.state.currentMood] }
-                next={ this.nextMood }
-                setThisMood={ this.setThisMood }
-                set={ this.state.setMood }
-              />
-            </div>
+            //called the header Component in the main Component
+              <div>
+                <Header />
+                <MoodMeter
+                  moodOptions={ this.state.moods[this.state.currentMood] }
+                  next={ this.nextMood }
+                  setThisMood={ this.setThisMood }
+                  set={ this.state.setMood }
+                />
+              </div>
+           
           )
         }
       }
@@ -66,15 +69,20 @@
       class MoodMeter extends React.Component{
         render(){
           return(
+            //added a root div ******
+            // called the setThisMood method inside the empty curly brackets on line 78
+            <>
+            
               <h3>Mood Options:</h3>
               <p style={{fontSize: "40px"}}>{ this.props.moodOptions }</p>
-              <button onClick={ }>Click Here For Next Mood Option</button>
+              <button onClick={ this.props.setThisMood }>Click Here For Next Mood Option</button>
               <br />
               <br />
               <h3>Save your mood here!</h3>
               <button onClick={ this.props.setThisMood }>Yup, this is me right now.</button>
               <h3>My mood:</h3>
               <p style={{fontSize: "40px"}}>{ this.props.set }</p>
+            </>
           )
         }
       }
